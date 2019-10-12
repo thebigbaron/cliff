@@ -5,6 +5,26 @@ import rainbow
 const
   version = "0.0.1"
 
+let doc = """
+Cliff. Toy cli App.
+
+Usage:
+  cliff play
+  cliff create
+  cliff run
+  
+
+Options:
+  -h --help         Show this screen.
+  -v --version      Show the version.
+
+Available commands:
+  create            Generate a folder and files
+  play              Just Play something nice!
+  run               Let's say run starts a server.
+"""
+
+
 proc main() =
   for kind, key, val in getopt():
     case kind:
@@ -15,7 +35,7 @@ proc main() =
         echo version
         quit()
       of "h", "help": 
-        echo "This is the help section"
+        echo doc
         quit()
       else:
         echo "Not exist option".rfRed2
