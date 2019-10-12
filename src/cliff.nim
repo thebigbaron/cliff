@@ -24,6 +24,20 @@ Available commands:
   run               Let's say run starts a server.
 """
 
+let play = """
+          _               _               _              _               _      
+        /\ \             _\ \            /\ \           /\ \            /\ \    
+       /  \ \           /\__ \           \ \ \         /  \ \          /  \ \   
+      / /\ \ \         / /_ \_\          /\ \_\       / /\ \ \        / /\ \ \  
+     / / /\ \ \       / / /\/_/         / /\/_/      / / /\ \_\      / / /\ \_\ 
+    / / /  \ \_\     / / /             / / /        / /_/_ \/_/     / /_/_ \/_/ 
+   / / /    \/_/    / / /             / / /        / /____/\       / /____/\    
+  / / /            / / / ____        / / /        / /\____\/      / /\____\/    
+ / / /________    / /_/_/ ___/\  ___/ / /__      / / /           / / /          
+/ / /_________\  /_______/\__\/ /\__\/_/___\    / / /           / / /           
+\/____________/  \_______\/     \/_________/    \/_/            \/_/        
+
+"""
 
 proc main() =
   for kind, key, val in getopt():
@@ -35,7 +49,7 @@ proc main() =
         echo version
         quit()
       of "h", "help": 
-        echo doc
+        echo doc.rfGold1
         quit()
       else:
         echo "Not exist option".rfRed2
@@ -43,7 +57,7 @@ proc main() =
     of cmdArgument:
       case key
       of "play": 
-        echo "This is just to play!".rfTan
+        echo play.rfLightGreen1
       of "create": 
         discard 
       of "run": 
