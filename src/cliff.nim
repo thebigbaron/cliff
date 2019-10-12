@@ -18,7 +18,7 @@ proc main() =
         echo "This is the help section"
         quit()
       else:
-        echo "Not exist option"
+        echo "Not exist option".rfRed2
         quit()
     of cmdArgument:
       case key
@@ -29,7 +29,7 @@ proc main() =
       of "run": 
         discard 
       else: 
-        echo "Not exist command"
+        echo "Not exist command".rfRed2
 
 when isMainModule:
   main()
