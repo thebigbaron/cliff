@@ -37,11 +37,13 @@ To install Cliff clone this project:
 
 ``` $ git clone https://github.com/thebigbaron/cliff.git ```
 
-cd into the file and install it locally using nimble:
+cd into the file and install it using nimble:
 
-``` $ nimble install ```
+``` $ nimble install ``` 
 
+Or direct with:
 
+``` $ nimble install https://github.com/thebigbaron/cliff.git ```
 
 ## Documentation
 Cliff have limited options to execute. You can view the options by typing:
