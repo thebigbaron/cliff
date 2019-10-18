@@ -3,23 +3,21 @@ import os, osproc, parseopt
 import rainbow
 
 const
-  version = "0.2.0"
+  version = "0.2.1"
 
 let doc = """
 Cliff. Toy cli App.
 
 Usage:
-  cliff play
-  cliff create
-  cliff run
+  cliff [-n:folderName] or [--new:folderName] 
   
 
 Options:
   -h --help         Show this screen.
   -v --version      Show the version.
+  -n --new          Creates a Project
 
 Available commands:
-  create            Generate a folder and files
   emoji             An emoji Bear(so sweet!🍬🐻)
   play              Just Play something nice!💓 ⛰️
   run               Let's say run starts a server.
@@ -55,10 +53,10 @@ let emoji = """
   🐻🐻🐻🐻🐻🍞🍞🍞🐻🐻🐻🐻🐻
 """
 
-proc createFolder*(siteName: string) =
+proc createFolder*(folderName: string) =
   let
     dir = getCurrentDir()
-    projectDir = joinPath(dir, "Folder")
+    projectDir = joinPath(dir, folderName)
     textFile = joinPath(projectDir, "info.txt")
     
  
@@ -66,7 +64,7 @@ proc createFolder*(siteName: string) =
   block createProjectDir:
     if not existsDir(projectDir):
       createDir(projectDir)
-    echo "Folder -->".rfMagenta5
+    echo folderName.rfMagenta5 & " -->".rfMagenta5
 
   
   block createTextTxt:
@@ -78,10 +76,10 @@ proc createFolder*(siteName: string) =
       echo "\t|-- info.txt".rfGold3
     file.writeLine(infoTxt)
 
-proc startFolder() =
+proc startFolder(folderName: string) =
   var dir = getCurrentDir()
-  createFolder("Folder")
-  echo "Folder has created!!".rfSeaGreen2
+  createFolder(folderName)
+  echo folderName.rfSeaGreen2 & " has created!!".rfSeaGreen2
 
 
 
@@ -93,6 +91,9 @@ proc main() =
       case key
       of "v", "version": 
         echo version.rfCyan1
+        quit()
+      of "n", "new":
+        startFolder(val.string)
         quit()
       of "h", "help": 
         echo doc.rfGold1
@@ -106,7 +107,6 @@ proc main() =
         echo play.rfLightGreen1
       of "emoji":
         echo emoji
-      of "create": startFolder()
       of "run": 
         discard 
       else: 

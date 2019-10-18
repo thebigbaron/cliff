@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.2.0"
+version       = "0.2.1"
 author        = "BigBaron"
 description   = "A toy cli app"
 license       = "MIT"
@@ -12,4 +12,4 @@ bin           = @["cliff"]
 # Dependencies
 
 requires "nim >= 1.0.0"
-requires "rainbow >= 0.2.0"
+requires "rainbow >= 0.2.2"
